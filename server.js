@@ -1,9 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/.env'});
 
 var express = require('express');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
-
 
 // Configure the Facebook strategy for use by Passport.
 //
@@ -13,8 +12,8 @@ var Strategy = require('passport-facebook').Strategy;
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
 passport.use(new Strategy({
-    clientID: process.env['FACEBOOK_CLIENT_ID'],
-    clientSecret: process.env['FACEBOOK_CLIENT_SECRET'],
+    clientID: process.env['CLIENT_ID'],
+    clientSecret: process.env['CLIENT_SECRET'],
     callbackURL: '/return'
   },
   function(accessToken, refreshToken, profile, cb) {
